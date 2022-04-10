@@ -13,8 +13,6 @@ window.addEventListener("load", () => {
 
       const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=d6caca170273805e12e327ab4f08010c`;
 
-      console.log(api);
-
       fetch(api)
         .then((res) => {
           return res.json();
@@ -28,11 +26,15 @@ window.addEventListener("load", () => {
           tempCurrentEl.textContent = temp + "℉";
           temperatureFeelEl.textContent = description;
           tempIconEl.src = `http://openweathermap.org/img/wn/${icon}@4x.png`;
+          hideSpinner();
         });
     });
   }
 });
 
+function hideSpinner() {
+  document.getElementById("spinner").style.display = "none";
+}
 //document.getElementById("myImg").src = "hackanm.gif";
 //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={d6caca170273805e12e327ab4f08010c}
 
